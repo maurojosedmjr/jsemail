@@ -46,6 +46,7 @@ function sendEmail(req, res){
               '</li><li>Telefone: ' + data.phone +
               '</li><li>Mensagem: ' + data.message + '</li>'
       };
+      
       transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
               return console.log(error);
