@@ -1,0 +1,23 @@
+{
+  "name": "jsemail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maurojosedmjr/jsemail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maurojosedmjr/jsemail/issues"
+  },
+  "homepage": "https://github.com/maurojosedmjr/jsemail#readme",
+  "devDependencies": {
+    "webpack": "^3.8.1"
+  }
+}
