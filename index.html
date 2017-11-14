@@ -1,17 +1,24 @@
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <h1>Contato</h1>
-    <form method="post" action="post">
-      First name:<br>
-      <input type="text" name="firstname" value="Mickey">
-      <br>
-      Last name:<br>
-      <input type="text" name="lastname" value="Mouse">
-      <br><br>
-      <input type="submit" value="Submit">
-    </form>
+  <body
+    <div class="container">
+      <h1>Contato</h1>
+      <form method="post" action="post">
+        <div class="form-group">
+          First name:<br>
+          <input type="text" name="firstname" value="">
+        </div>
+        <div class="form-group">
+          Last name:<br>
+          <input type="text" name="lastname" value="">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-default">
+      </form>
+    </div>
   </body>
 </html>

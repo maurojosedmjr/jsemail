@@ -26,7 +26,7 @@ module.exports = {
       default:
         res.writeHead(404);
         res.write('Caminho nao encontrado');
-        red.end();
+        res.end();
     }
   }
 }
