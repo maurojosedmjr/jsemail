@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/maurojosedmjr/jsemail#readme",
   "devDependencies": {
+    "restify": "^6.3.2",
     "webpack": "^3.8.1"
   }
 }
