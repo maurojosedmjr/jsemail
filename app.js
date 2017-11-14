@@ -1,6 +1,16 @@
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
+var nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'zuvql3ieas4exjch@ethereal.email',
+        pass: 'zqMrHHaabkHWFxtUt7'
+    }
+});
 
 function renderHtml(path, res){
   fs.readFile(path, null, function(error, data) {
@@ -14,7 +24,7 @@ function renderHtml(path, res){
   });
 }
 
-function getForm(req, res){
+function sendEmail(req, res){
   if (req.method === 'POST'){
     var body = '';
     req.on('data', function(chunk){
@@ -23,8 +33,23 @@ function getForm(req, res){
     req.on('end', function() {
       var data = qs.parse(body);
       res.writeHead(200);
+      var mailOptions = {
+        from: 'zuvql3ieas4exjch@ethereal.email',
+        to: 'maurojosedmjr@gmail.com',
+        subject: 'Contato',
+        text: 'Nome: ' + data.fullName +
+              ' Telefone: ' + data.phone +
+              '<br>Mensagem: ' + data.message
+      };
+      transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);
+          console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      });
       console.log(JSON.stringify(data));
-      res.end(JSON.stringify(data));
+      res.end();
     })
   } else {
     res.writeHead(404);
@@ -42,7 +67,7 @@ module.exports = {
         renderHtml('./index.html', res);
         break;
       case '/post':
-        getForm(req, res);
+        sendEmail(req, res);
         break;
       default:
         res.writeHead(404);
