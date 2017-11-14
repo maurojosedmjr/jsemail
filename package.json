@@ -19,5 +19,8 @@
   "homepage": "https://github.com/maurojosedmjr/jsemail#readme",
   "devDependencies": {
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "nodemailer": "^4.4.0"
   }
 }
