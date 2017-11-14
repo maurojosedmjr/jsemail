@@ -38,8 +38,13 @@ function sendEmail(req, res){
         to: 'maurojosedmjr@gmail.com',
         subject: 'Contato',
         text: 'Nome: ' + data.fullName +
+              ' Email: ' + data.email +
               ' Telefone: ' + data.phone +
-              '<br>Mensagem: ' + data.message
+              ' Mensagem: ' + data.message,
+        html: '<ul><li>Nome: ' + data.fullName +
+              '</li><li>Email: ' + data.email +
+              '</li><li>Telefone: ' + data.phone +
+              '</li><li>Mensagem: ' + data.message + '</li>'
       };
       transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
