@@ -3,12 +3,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Meu script -->
+    <script>
+      function enviaForm(){  
+        var request = new XMLHttpRequest();
+        request.open('POST', '/post', true);
+
+        request.onload = function() {
+          if (request.status >= 200 && request.status < 400) {
+            console.log('enviado com sucesso')
+          } else {
+            console.log('chegou no server mas deu erro =/')
+          }
+        };
+
+        request.onerror = function() {
+          console.log('erro')
+        };
+        
+        var body = mountData();
+        request.send(JSON.stringify(body));
+      }
+      
+      function mountData(){
+        return {
+          fullName: document.querySelector('input[name=fullName]').value || '',
+          email: document.querySelector('input[name=email]').value  || '',
+          phone: document.querySelector('input[name=phone]').value  || '',
+          message: document.querySelector('textarea[name=message]').value  || ''
+        }
+      }
+    </script>
   </head>
 
   <body
     <div class="container">
       <h1>Contato</h1>
-      <form method="POST" action="post">
+      <div>
         <div class="form-group">
           <label for="fullName">Nome compelto</label>
           <input type="text" class="form-control" name="fullName" value="">
@@ -25,8 +57,8 @@
           <label for="message">Mensagem</label>
           <textarea class="form-control" name="message" rows="3"></textarea>
         </div>
-        <input type="submit" value="Submit" class="btn btn-default">
-      </form>
+        <input type="submit" onclick="enviaForm()" class="btn btn-default">
+      </div>
     </div>
   </body>
 </html>

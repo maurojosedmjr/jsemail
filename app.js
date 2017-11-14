@@ -31,7 +31,7 @@ function sendEmail(req, res){
       body += chunk;
     });
     req.on('end', function() {
-      var data = qs.parse(body);
+      var data = JSON.parse(body);
       res.writeHead(200);
       var mailOptions = {
         from: 'zuvql3ieas4exjch@ethereal.email',
@@ -46,6 +46,7 @@ function sendEmail(req, res){
               '</li><li>Telefone: ' + data.phone +
               '</li><li>Mensagem: ' + data.message + '</li>'
       };
+      
       transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
               return console.log(error);
@@ -53,7 +54,7 @@ function sendEmail(req, res){
           console.log('Message sent: %s', info.messageId);
           console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
       });
-      console.log(JSON.stringify(data));
+
       res.end();
     })
   } else {
@@ -65,8 +66,8 @@ function sendEmail(req, res){
 module.exports = {
   handleRequest: function (req, res) {
     res.writeHead(200, {'Content-type': 'text/html'});
-
     var path = url.parse(req.url).pathname;
+    console.log('rota ' + path)
     switch (path) {
       case '/':
         renderHtml('./index.html', res);
